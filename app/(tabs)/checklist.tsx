@@ -1,17 +1,11 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  Alert,
-  FlatList,
-  Keyboard,
-  Pressable,
-  TextInput,
-  View,
-} from "react-native";
-
+import { ProgressBar } from "@/components/progress-bar";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useMemo, useState } from "react";
+import { Alert, FlatList, Keyboard, Pressable, TextInput, View, } from "react-native";
+
 
 type ChecklistItem = {
   id: string;
@@ -36,6 +30,10 @@ export default function ChecklistScreen() {
     () => items.filter((i) => i.checked).length,
     [items]
   );
+
+  const progress = items.length === 0 ? 0 : checkedCount / items.length;
+  const progressLabel = `${Math.round(progress * 100)}%`;
+
 
   // Load once
   useEffect(() => {
@@ -116,6 +114,12 @@ export default function ChecklistScreen() {
           {items.length === 0
             ? "Add items to build your hiking pack list."
             : `${checkedCount}/${items.length} packed`}
+            <View style={{ marginTop: 10 }}>
+          <ProgressBar value={progress} />
+          <ThemedText style={{ marginTop: 6, opacity: 0.8 }}>
+            {progressLabel}
+          </ThemedText>
+        </View>
         </ThemedText>
       </View>
 
