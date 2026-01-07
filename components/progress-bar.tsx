@@ -17,15 +17,17 @@ export function ProgressBar({ value, height = 10 }: Props) {
   return (
     <View
       style={{
+        width: "100%",
+        alignSelf: "stretch",
         height,
         borderRadius: height / 2,
         overflow: "hidden",
-        backgroundColor: trackColor,
+        backgroundColor: "rgba(120,120,120,0.18)",
         borderWidth: 1,
-        borderColor: borderColor,
-        opacity: 0.25, // keeps the track subtle in both themes
+        borderColor: "rgba(120,120,120,0.35)",
       }}
     >
+
       <View
         style={{
           height: "100%",

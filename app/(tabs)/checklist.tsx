@@ -114,12 +114,13 @@ export default function ChecklistScreen() {
           {items.length === 0
             ? "Add items to build your hiking pack list."
             : `${checkedCount}/${items.length} packed`}
-            <View style={{ marginTop: 10 }}>
-          <ProgressBar value={progress} />
-          <ThemedText style={{ marginTop: 6, opacity: 0.8 }}>
-            {progressLabel}
-          </ThemedText>
-        </View>
+            <View style={{ marginTop: 10, alignSelf: "stretch", width: "100%" }}>
+              <ProgressBar value={progress} />
+              <ThemedText style={{ marginTop: 6, opacity: 0.8 }}>
+                {progressLabel}
+              </ThemedText>
+            </View>
+
         </ThemedText>
       </View>
 
@@ -187,7 +188,7 @@ export default function ChecklistScreen() {
             <View
               style={{
                 flexDirection: "row",
-                alignItems: "center",
+                alignItems: "stretch",
                 paddingVertical: 12,
                 borderBottomWidth: 1,
                 borderBottomColor: "rgba(120,120,120,0.18)",
