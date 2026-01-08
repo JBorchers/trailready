@@ -32,8 +32,8 @@ export default function ChecklistScreen() {
   );
 
   const progress = items.length === 0 ? 0 : checkedCount / items.length;
-  const progressLabel = `${Math.round(progress * 100)}%`;
-
+/*   const progressLabel = `${Math.round(progress * 100)}%`;
+ */
 
   // Load once
   useEffect(() => {
@@ -108,19 +108,32 @@ export default function ChecklistScreen() {
 
   return (
     <ThemedView style={{ flex: 1, padding: 16 }}>
-      <View style={{ marginBottom: 12 }}>
+      <View style={{ marginBottom: 16 }}>
         <ThemedText type="title">Checklist</ThemedText>
-        <ThemedText style={{ marginTop: 6, opacity: 0.8 }}>
+
+        {/* Progress */}
+        {items.length > 0 && (
+          <View style={{ marginTop: 14, width: "100%" }}>
+            <ProgressBar value={progress} height={12} />
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 8,
+              }}
+            >
+              {/*
+              <ThemedText style={{ opacity: 0.8 }}>Packed</ThemedText>
+              <ThemedText style={{ opacity: 0.8 }}>{progressLabel}</ThemedText>
+              */}
+            </View>
+          </View>
+        )}
+
+        <ThemedText style={{ marginTop: 8, opacity: 0.8 }}>
           {items.length === 0
             ? "Add items to build your hiking pack list."
             : `${checkedCount}/${items.length} packed`}
-            <View style={{ marginTop: 10, alignSelf: "stretch", width: "100%" }}>
-              <ProgressBar value={progress} />
-              <ThemedText style={{ marginTop: 6, opacity: 0.8 }}>
-                {progressLabel}
-              </ThemedText>
-            </View>
-
         </ThemedText>
       </View>
 

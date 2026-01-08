@@ -15,16 +15,16 @@ export function ProgressBar({ value, height = 10 }: Props) {
   const borderColor = useThemeColor({}, "text");
 
   return (
-    <View
-      style={{
+    <View 
+        style={{
         width: "100%",
         alignSelf: "stretch",
         height,
         borderRadius: height / 2,
         overflow: "hidden",
-        backgroundColor: "rgba(120,120,120,0.18)",
+        backgroundColor: trackColor,
         borderWidth: 1,
-        borderColor: "rgba(120,120,120,0.35)",
+        borderColor: borderColor,
       }}
     >
 
